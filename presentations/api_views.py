@@ -15,6 +15,18 @@ class PresentationListEncoder(ModelEncoder):
         return {"status": o.status.name}
 
 
+class PresentationDetailEncoder(ModelEncoder):
+    model = Presentation
+    properties = [
+        "presenter_name",
+        "company_name",
+        "presenter_email",
+        "title",
+        "synopsis",
+        "created",
+    ]
+
+
 def api_list_presentations(request, conference_id):
     """
     Lists the presentation titles and the link to the
@@ -43,18 +55,6 @@ def api_list_presentations(request, conference_id):
         encoder=PresentationListEncoder,
         safe=False,
     )
-
-
-class PresentationDetailEncoder(ModelEncoder):
-    model = Presentation
-    properties = [
-        "presenter_name",
-        "company_name",
-        "presenter_email",
-        "title",
-        "synopsis",
-        "created",
-    ]
 
 
 def api_show_presentation(request, id):
