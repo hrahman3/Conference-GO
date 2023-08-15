@@ -19,7 +19,7 @@ class Attendee(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     conference = models.ForeignKey(
-        "events.ConferenceVO",
+        "attendees.ConferenceVO",
         related_name="attendees",
         on_delete=models.CASCADE,
     )
